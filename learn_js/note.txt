@@ -1,0 +1,1 @@
+set up server (to allow read json file):  python -m SimpleHTTPServer
