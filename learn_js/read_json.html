@@ -2,7 +2,7 @@
 <html>
 <head>
 	<title>Graph Example</title>
-	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="https://d3js.org/d3.v4.min.js"></script>
 </head>
 
 <body>
@@ -10,9 +10,20 @@
     <div id="viz"></div>
 
 	<script type="text/javascript">
-		d3.csv("mark.csv", function(data) {
-			console.log(data)
+		var week_1_array=[];
+		d3.csv("score-format2.csv", function(data) {
+				console.log(data)
+			  data.forEach(function(d) {
+			    console.log(d.week_1)
+			    week_1_array.push(d.week_1)
+			  });
+			  console.log(week_1_array)
 		});
+
+	//	var values = d3.range(10).map(d3.random.normal(20, 5));
+		var data = d3.range(10).map(d3.randomBates(10));
+		//console.log(data)
+		//console.log(values)
 	</script>
 
 

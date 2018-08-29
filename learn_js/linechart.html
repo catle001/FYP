@@ -19,6 +19,8 @@
 
 <script>
   function draw(data){
+    var color = d3.scale.category10();
+
     var vis = d3.select("#visualisation"),
         WIDTH = 1000,
         HEIGHT = 500,
@@ -26,16 +28,17 @@
 
     xScale = d3.scale.linear().range([MARGINS.left, WIDTH - MARGINS.right]).domain([1,10]);
     yScale = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([1,100]);
+    //colorScale.domain(data.map(function (d){ return d.name; }));
 
     xAxis = d3.svg.axis().scale(xScale);  
     yAxis = d3.svg.axis().scale(yScale).orient("left");
 
-    vis.append("svg:g")
+    vis.append("g")
         .attr("class","axis")
         .attr("transform", "translate(0," + (HEIGHT - MARGINS.bottom) + ")")
         .call(xAxis);
 
-    vis.append("svg:g")
+    vis.append("g")
         .attr("class","axis")
         .attr("transform", "translate(" + (MARGINS.left) + ",0)")
         .call(yAxis);
@@ -48,12 +51,15 @@
         return yScale(d.mark);
       });
 
-    dataGroup.forEach( function(d, i) {
-        vis.append('svg:path')
-            .attr('d', lineGen(d.values))
-            .attr('stroke', function(d, j) { return "hsl(" + Math.random() * 360 + ",100%,50%)" }) //random color
-            .attr('stroke-width', 2)
-            .attr('fill', 'none');
+    data.forEach( function(d, i) {
+      console.log(d);
+      vis.append('path')
+          .attr('d', lineGen(d.values))
+          .attr("stroke", color(d.key) )
+          .attr('stroke-width', 2)
+          .attr('fill', 'none')
+   //       .on("mouseover", d3.select(this).style("fill", d3.rgb(color(d.key)).darker(2)) )
+     // .on("mouseout", d3.select(this).style("fill", color(d.key)) );
     });
   }
 
