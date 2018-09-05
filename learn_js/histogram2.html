@@ -7,6 +7,12 @@ rect.bar { fill: steelblue; }
 </style>
 <body>
 
+    <form>
+        <label for="year">Please select a week: </label>
+        <input type="range" min=1 max=10 step=1 id="year" value=10 oninput="selected_year.value = year.value">
+        <output name="selected_year" id="selected_year">10</output>
+    </form>
+
 <!-- load the d3.js library -->    	
 <script src="//d3js.org/d3.v4.min.js"></script>
 <script>
