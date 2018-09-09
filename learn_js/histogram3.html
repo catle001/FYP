@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style> /* set the CSS */
+
+rect.bar { fill: steelblue; }
+
+</style>
+<body>
+
+    <form>
+        <label for="year">Please select a week: </label>
+        <input type="range" min=1 max=10 step=1 id="year" value=10 oninput="selected_year.value = year.value">
+        <output name="selected_year" id="selected_year">10</output>
+    </form>
+
+<!-- load the d3.js library -->    	
+<script src="//d3js.org/d3.v4.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/d3-queue/3.0.4/d3-queue.min.js"></script>
+<script>
+
+// set the dimensions and margins of the graph
+var margin = {top: 10, right: 30, bottom: 30, left: 40},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
+
+var data;
+
+// set the ranges
+var x = d3.scaleLinear()
+          .domain([0,100])
+          .rangeRound([0, width]);
+var y = d3.scaleLinear()
+          .range([height, 0]);
+
+
+
+// append the svg object to the body of the page
+// append a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
+var svg = d3.select("body").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
+
+  // add the x Axis
+  svg.append("g")
+      .attr("transform", "translate(0," + height + ")")
+      .call(d3.axisBottom(x));
+
+  // add the y Axis
+  svg.append("g")
+      .call(d3.axisLeft(y));
+
+// get the data
+function draw(year) {
+
+  var week = 'Week_'+year;
+
+  // set the parameters for the histogram
+  var histogram = d3.histogram()
+      .value(function(d) {
+        return d[week]; })
+      .domain(x.domain())
+      .thresholds(x.ticks(20));
+
+  // group the data for the bars
+  var bins = histogram(data);
+
+  var bars = svg.selectAll('.bar')
+      .data(bins);
+
+  //exit
+  bars
+      .exit()
+      .remove();
+
+
+  // Scale the range of the data in the y domain
+  y.domain([0, d3.max(bins, function(d) { return d.length; })]);
+  console.log('max='+d3.max(bins, function(d) { return d.length; }))
+  console.log('y.domain()='+y.domain())
+
+
+  // append the bar rectangles to the svg element
+  var new_bars = bars
+      .enter()
+      .append('rect')
+      .attr("class", "bar")
+        .merge(bars).transition()
+      .attr("x", 1)
+      .attr("y",y)
+      .attr("transform", function(d) {
+		    return "translate(" + x(d.x0) + "," + y(d.length) + ")"; })
+      .attr("width", function(d) { return x(d.x1) - x(d.x0) -1 ; })
+      .attr("height", function(d) { return height - y(d.length); });
+
+};
+
+d3.queue()
+    .defer(d3.csv, 'score-format2.csv')
+    .await(function(error, d) {
+        data = d;
+        console.log(data);
+        draw('10');
+    });
+
+var slider = d3.select('#year');
+slider.on('change', function() {
+    draw(this.value);
+    console.log(this.value);
+  });
+
+</script>
+</body>
