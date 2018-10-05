@@ -3,7 +3,7 @@ var fs = require('fs');
 
 const hostname = '127.0.0.1';
 const port = 3000;
-const htmlfile = 'histogram3.html';
+const htmlfile = 'public/histogram3.html';
 
 const server = http.createServer(function (req, res) {
 	fs.readFile(htmlfile , function(err, data) {
