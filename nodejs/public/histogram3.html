@@ -111,10 +111,12 @@ function draw(week_num) {
 
 };
 
+
 d3.queue()
-    .defer(d3.csv, 'score-format2.csv')
+    .defer(d3.json, "/api/data")
     .await(function(error, d) {
         data = d;
+        console.log(d);
         draw(slider2.value());
     });
 
