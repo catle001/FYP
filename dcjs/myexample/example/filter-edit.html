@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.js - Filtering Example</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/dc.css"/>
+    <style>
+      #table td {
+        padding-left: 10px;
+      }
+    </style>
+</head>
+<body>
+
+<div class="container">
+<script type="text/javascript" src="header.js"></script>
+  <div id="chart-ring-year" style="width:300px; height:330px">
+    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+      <a href="javascript:yearRingChart.filterAll();dc.redrawAll();">reset</a>
+    </div>
+  </div>
+  <div id="chart-hist-spend" style="width:300px; height:330px">
+    <div class="reset" style="visibility: hidden;">range: <span class="filter"></span>
+      <a href="javascript:spendHistChart.filterAll();dc.redrawAll();">reset</a>
+    </div>
+  </div>
+  <div id="chart-row-spenders" style="width:300px; height:330px">
+    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+      <a href="javascript:spenderRowChart.filterAll();dc.redrawAll();">reset</a>
+    </div>
+  </div>
+
+    <div id="inputSlider">
+        <div><input type="range" id="slideRange" value="50" min="0" max="100" step="10" onchange="updateSlider(this.value)"></div>
+        Score threshold: <span id="sliderValue">50</label>
+    </div>
+    <div id="dc-coreAcc-piechart"></div>
+
+<script type="text/javascript" src="../js/d3.js"></script>
+<script type="text/javascript" src="../js/crossfilter.js"></script>
+<script type="text/javascript" src="../js/dc.js"></script>
+<script type="text/javascript">
+
+var yearRingChart   = dc.lineChart("#chart-ring-year"),
+    spendHistChart  = dc.barChart("#chart-hist-spend"),
+    spenderRowChart = dc.rowChart("#chart-row-spenders");
+
+var goodYesNoPieChart = dc.pieChart('#dc-coreAcc-piechart');
+
+var table = dc.dataTable('#table');
+
+// use static or load via d3.csv("spendData.csv", function(error, spendData) {/* do stuff */});
+var spendData = [
+    {Name: 'Mr A', Spent: '$40', Year: 2011},
+    {Name: 'Mr B', Spent: '$10', Year: 2012},
+    {Name: 'Mr C', Spent: '$40', Year: 2013},
+    {Name: 'Mr A', Spent: '$70', Year: 2014},
+    {Name: 'Mr B', Spent: '$20', Year: 2015},
+    {Name: 'Mr B', Spent: '$50', Year: 2017},
+    {Name: 'Mr C', Spent: '$30', Year: 2018}
+];
+
+// normalize/parse data
+spendData.forEach(function(d) {
+    d.Spent = d.Spent.match(/\d+/)[0];
+});
+
+// set crossfilter
+var ndx = crossfilter(spendData),
+    all = ndx.groupAll(),
+    yearDim  = ndx.dimension(function(d) {return +d.Year;}),
+    spendDim = ndx.dimension(function(d) {return Math.floor(d.Spent/10);}),
+    nameDim  = ndx.dimension(function(d) {return d.Name;}),
+    spendPerYear = yearDim.group().reduceSum(function(d) {return +d.Spent;}),
+    spendPerName = nameDim.group().reduceSum(function(d) {return +d.Spent;}),
+    spendHist    = spendDim.group().reduceCount();
+
+  yearRingChart
+    .width(300)
+    .height(300)
+    .dimension(yearDim)
+    .group(spendPerYear)
+    .x(d3.scaleLinear().domain([2010, 2020]))
+    .controlsUseVisibility(true);
+
+  spendHistChart
+    .dimension(spendDim)
+    .group(spendHist)
+    .x(d3.scaleLinear().domain([0,10]))
+    .elasticY(true)
+    .colors(["orange"])
+    .controlsUseVisibility(true);
+
+    spendHistChart.xAxis().tickFormat(function(d) {return d*10}); // convert back to base unit
+    spendHistChart.yAxis().ticks(2);
+
+  spenderRowChart
+    .dimension(nameDim)
+    .group(spendPerName)
+    .elasticX(true)
+    .controlsUseVisibility(true);
+
+
+    //## pie chart
+    // reusable function to create threshold dimension
+    function coreCount_from_threshold() {
+        var scoreThreshold=document.getElementById('slideRange').value;
+        scoreThreshold=parseInt(scoreThreshold);
+        if (isNaN(scoreThreshold)) {
+            scoreThreshold=50;
+        }
+        return ndx.dimension(function (d) {
+            if (d.Spent > scoreThreshold) {
+                return 'High';
+            } else {
+                return 'Low';
+            }
+        });
+    };
+
+    var coreCount = coreCount_from_threshold();
+    var coreCountGroup = coreCount.group();
+
+    goodYesNoPieChart
+        .width(320)
+        .height(320)
+        .radius(120)
+        .innerRadius(40)
+        .dimension(coreCount)
+        .title(function(d){return d.value;})
+        .group(coreCountGroup)
+        .label(function (d) {
+            if (goodYesNoPieChart.hasFilter() && !goodYesNoPieChart.hasFilter(d.key)) {
+                return d.key + '(0%)';
+            }
+            var label = d.key;
+            console.log("console label" + label);
+            if (all.value()) {
+                label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+            }
+            return label;
+        })
+
+dc.renderAll();
+
+    //## change slider score value to re-assign the data in pie chart
+    function updateSlider(slideValue) {
+        var sliderDiv = document.getElementById("sliderValue");
+        sliderDiv.innerHTML = slideValue;
+        coreCount.dispose();
+        coreCount = coreCount_from_threshold();
+        coreCountGroup = coreCount.group();
+        goodYesNoPieChart
+            .dimension(coreCount)
+            .group(coreCountGroup);
+        dc.redrawAll();
+    }
+
+</script>
+
+</div>
+</body>
+</html>

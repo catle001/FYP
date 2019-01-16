@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>dc.js - Filtering Example</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/dc.css"/>
+    <style>
+      #table td {
+        padding-left: 10px;
+      }
+    </style>
+</head>
+<body>
+
+<div class="container">
+  <div id="chart-ring-year" style="width:300px; height:330px">
+    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+      <a href="javascript:yearRingChart.filterAll();dc.redrawAll();">reset</a>
+    </div>
+  </div>
+  <div id="chart-hist-spend" style="width:300px; height:330px">
+    <div class="reset" style="visibility: hidden;">range: <span class="filter"></span>
+      <a href="javascript:spendHistChart.filterAll();dc.redrawAll();">reset</a>
+    </div>
+  </div>
+  <div id="chart-row-spenders" style="width:300px; height:330px">
+    <div class="reset" style="visibility: hidden;">selected: <span class="filter"></span>
+      <a href="javascript:spenderRowChart.filterAll();dc.redrawAll();">reset</a>
+    </div>
+  </div>
+
+    <div id="inputSlider">
+        <div><input type="range" id="slideRange" value="50" min="0" max="100" step="10" onchange="updateSlider(this.value)"></div>
+        Score threshold: <span id="sliderValue">50</label>
+    </div>
+    <div id="dc-coreAcc-piechart"></div>
+
+<script type="text/javascript" src="../js/d3.js"></script>
+<script type="text/javascript" src="../js/crossfilter.js"></script>
+<script type="text/javascript" src="../js/dc.js"></script>
+<script type="text/javascript">
+
+var yearRingChart   = dc.lineChart("#chart-ring-year"),
+    spendHistChart  = dc.barChart("#chart-hist-spend"),
+    spenderRowChart = dc.rowChart("#chart-row-spenders");
+
+var goodYesNoPieChart = dc.pieChart('#dc-coreAcc-piechart');
+
+var table = dc.dataTable('#table');
+
+d3.csv("mark.csv").then(function(spendData) {/* do stuff */
+    spendData.forEach(function (d) {
+        d.week = +d.week; // coerce to number
+        d.mark = +d.mark;
+    });
+
+  // set crossfilter
+  var ndx = crossfilter(spendData),
+      all = ndx.groupAll(),
+      yearDim  = ndx.dimension(function(d) {return +d.week;}),
+      spendDim = ndx.dimension(function(d) {return Math.floor(d.mark/10);}),
+      nameDim  = ndx.dimension(function(d) {return d.name;}),
+      spendPerYear = yearDim.group().reduceSum(function(d) {return +d.mark;}),
+      spendPerName = nameDim.group().reduceSum(function(d) {return +d.mark;}),
+      spendHist    = spendDim.group().reduceCount();
+
+    yearRingChart
+      .width(300)
+      .height(300)
+      .dimension(yearDim)
+      .group(spendPerYear)
+      .x(d3.scaleLinear().domain([1, 13]))
+      .controlsUseVisibility(true);
+
+    spendHistChart
+      .dimension(spendDim)
+      .group(spendHist)
+      .x(d3.scaleLinear().domain([0,10]))
+      .elasticY(true)
+      .colors(["orange"])
+      .controlsUseVisibility(true);
+
+      spendHistChart.xAxis().tickFormat(function(d) {return d*10}); // convert back to base unit
+      spendHistChart.yAxis().ticks(2);
+
+    spenderRowChart
+      .dimension(nameDim)
+      .group(spendPerName)
+      .elasticX(true)
+      .controlsUseVisibility(true);
+
+
+      //## pie chart
+      // reusable function to create threshold dimension
+      function coreCount_from_threshold() {
+          var scoreThreshold=document.getElementById('slideRange').value;
+          scoreThreshold=parseInt(scoreThreshold);
+          if (isNaN(scoreThreshold)) {
+              scoreThreshold=50;
+          }
+          return ndx.dimension(function (d) {
+              if (d.mark > scoreThreshold) {
+                  return 'High';
+              } else {
+                  return 'Low';
+              }
+          });
+      };
+
+      var coreCount = coreCount_from_threshold();
+      var coreCountGroup = coreCount.group();
+
+      goodYesNoPieChart
+          .width(320)
+          .height(320)
+          .radius(120)
+          .innerRadius(40)
+          .dimension(coreCount)
+          .title(function(d){return d.value;})
+          .group(coreCountGroup)
+          .label(function (d) {
+              if (goodYesNoPieChart.hasFilter() && !goodYesNoPieChart.hasFilter(d.key)) {
+                  return d.key + '(0%)';
+              }
+              var label = d.key;
+              console.log("console label" + label);
+              if (all.value()) {
+                  label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
+              }
+              return label;
+          })
+
+  dc.renderAll();
+
+      //## change slider score value to re-assign the data in pie chart
+      function updateSlider(slideValue) {
+          var sliderDiv = document.getElementById("sliderValue");
+          sliderDiv.innerHTML = slideValue;
+          coreCount.dispose();
+          coreCount = coreCount_from_threshold();
+          coreCountGroup = coreCount.group();
+          goodYesNoPieChart
+              .dimension(coreCount)
+              .group(coreCountGroup);
+          dc.redrawAll();
+      }
+});
+
+</script>
+
+</div>
+</body>
+</html>
