@@ -53,13 +53,16 @@ var goodYesNoPieChart = dc.pieChart('#dc-coreAcc-piechart');
 var table = dc.dataTable('#table');
 var spendData;
 
-d3.queue()
-    .defer(d3.csv, 'spendData.csv')
-    .await(function(error, d) {
-        spendData = d;
-        console.log(d);
-        draw();
-    });
+var files = ["data1.json", "data2.json", "data3.json"];
+var promises = [];
+
+files.forEach(function(url) {
+    promises.push(d3.json(url))
+});
+
+Promise.all(promises).then(function(values) {
+    console.log(values)
+});
 
 function draw() {
   console.log(spendData);
@@ -99,63 +102,11 @@ function draw() {
       .controlsUseVisibility(true);
 
 
-      //## pie chart
-      // reusable function to create threshold dimension
-      function coreCount_from_threshold() {
-          var scoreThreshold=document.getElementById('slideRange').value;
-          scoreThreshold=parseInt(scoreThreshold);
-          if (isNaN(scoreThreshold)) {
-              scoreThreshold=50;
-          }
-          return ndx.dimension(function (d) {
-              if (d.Spent > scoreThreshold) {
-                  return 'High';
-              } else {
-                  return 'Low';
-              }
-          });
-      };
-
-      var coreCount = coreCount_from_threshold();
-      var coreCountGroup = coreCount.group();
-
-      goodYesNoPieChart
-          .width(320)
-          .height(320)
-          .radius(120)
-          .innerRadius(40)
-          .dimension(coreCount)
-          .title(function(d){return d.value;})
-          .group(coreCountGroup)
-          .label(function (d) {
-              if (goodYesNoPieChart.hasFilter() && !goodYesNoPieChart.hasFilter(d.key)) {
-                  return d.key + '(0%)';
-              }
-              var label = d.key;
-              console.log("console label" + label);
-              if (all.value()) {
-                  label += '(' + Math.floor(d.value / all.value() * 100) + '%)';
-              }
-              return label;
-          })
-
   dc.renderAll();
 
 
 };
 
-  //## change slider score value to re-assign the data in pie chart
-  function updateSlider(slideValue) {
-      var sliderDiv = document.getElementById("sliderValue");
-      sliderDiv.innerHTML = slideValue;
-      coreCount.dispose();
-      coreCount = coreCount_from_threshold();
-      coreCountGroup = coreCount.group();
-      goodYesNoPieChart
-          .dimension(coreCount)
-          .group(coreCountGroup);
-      dc.redrawAll();
-  }
 
 </script>
 

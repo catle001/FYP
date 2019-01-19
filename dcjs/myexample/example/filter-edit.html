@@ -142,20 +142,20 @@ var ndx = crossfilter(spendData),
             return label;
         })
 
-dc.renderAll();
+  dc.renderAll();
 
-    //## change slider score value to re-assign the data in pie chart
-    function updateSlider(slideValue) {
-        var sliderDiv = document.getElementById("sliderValue");
-        sliderDiv.innerHTML = slideValue;
-        coreCount.dispose();
-        coreCount = coreCount_from_threshold();
-        coreCountGroup = coreCount.group();
-        goodYesNoPieChart
-            .dimension(coreCount)
-            .group(coreCountGroup);
-        dc.redrawAll();
-    }
+  //## change slider score value to re-assign the data in pie chart
+  function updateSlider(slideValue) {
+      var sliderDiv = document.getElementById("sliderValue");
+      sliderDiv.innerHTML = slideValue;
+      coreCount.dispose();
+      coreCount = coreCount_from_threshold();
+      coreCountGroup = coreCount.group();
+      goodYesNoPieChart
+          .dimension(coreCount)
+          .group(coreCountGroup);
+      dc.redrawAll();
+  }
 
 </script>
 
