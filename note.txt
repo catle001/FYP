@@ -2,4 +2,4 @@ set up server (to allow read json file):  python -m SimpleHTTPServer
 
 domain: original, range: scaled one
 
-dc, d3, crossfilter
+dc, d3, crossfilter, v.4.0.3
