@@ -80,7 +80,7 @@ class Dashboard extends React.Component {
                             type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Accounts
+                            Score
                           </span>
                           <span className="d-block d-sm-none">
                             <i className="tim-icons icon-single-02" />
@@ -102,7 +102,7 @@ class Dashboard extends React.Component {
                             type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Purchases
+                            Participation
                           </span>
                           <span className="d-block d-sm-none">
                             <i className="tim-icons icon-gift-2" />
@@ -124,7 +124,7 @@ class Dashboard extends React.Component {
                             type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Sessions
+                            CA1
                           </span>
                           <span className="d-block d-sm-none">
                             <i className="tim-icons icon-tap-02" />
@@ -139,64 +139,6 @@ class Dashboard extends React.Component {
                     <Line
                       data={chartExample1[this.state.bigChartData]}
                       options={chartExample1.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col lg="4">
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">Total Shipments</h5>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-bell-55 text-info" />{" "}
-                    763,215
-                  </CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={chartExample2.data}
-                      options={chartExample2.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col lg="4">
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">Daily Sales</h5>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-delivery-fast text-primary" />{" "}
-                    3,500€
-                  </CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Bar
-                      data={chartExample3.data}
-                      options={chartExample3.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col lg="4">
-              <Card className="card-chart">
-                <CardHeader>
-                  <h5 className="card-category">Completed Tasks</h5>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-send text-success" /> 12,100K
-                  </CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={chartExample4.data}
-                      options={chartExample4.options}
                     />
                   </div>
                 </CardBody>

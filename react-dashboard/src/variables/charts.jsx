@@ -113,22 +113,22 @@ let chartExample1 = {
 
     return {
       labels: [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC"
+        "Wk1",
+        "Wk2",
+        "Wk3",
+        "Wk4",
+        "Wk5",
+        "Wk6",
+        "Wk7",
+        "Wk8",
+        "Wk9",
+        "Wk10",
+        "Wk11",
+        "Wk12"
       ],
       datasets: [
         {
-          label: "My First dataset",
+          label: "25 percentile",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: "#1f8ef1",
@@ -158,22 +158,22 @@ let chartExample1 = {
 
     return {
       labels: [
-        "JAN",
-        "FEB",
-        "MAR",
-        "APR",
-        "MAY",
-        "JUN",
-        "JUL",
-        "AUG",
-        "SEP",
-        "OCT",
-        "NOV",
-        "DEC"
+        "Wk1",
+        "Wk2",
+        "Wk3",
+        "Wk4",
+        "Wk5",
+        "Wk6",
+        "Wk7",
+        "Wk8",
+        "Wk9",
+        "Wk10",
+        "Wk11",
+        "Wk12"
       ],
       datasets: [
         {
-          label: "My First dataset",
+          label: "5 percentile",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: "#1f8ef1",
