@@ -97,7 +97,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 40, 100]
+          data: [100, 70, 90, 70, 85, 60, 75, 60, 90]
         }
       ]
     };
@@ -142,7 +142,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [80, 120, 105, 110, 95, 105, 90, 100, 80, 95, 70, 120]
+          data: [80, 120, 105, 110, 95, 105, 90, 100, 80, 95]
         }
       ]
     };
