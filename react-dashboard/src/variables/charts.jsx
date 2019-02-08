@@ -1,4 +1,4 @@
-﻿// ##############################
+// ##############################
 // // // Chart variables
 // #############################
 
@@ -104,7 +104,7 @@ let chartExample1 = {
   },
   data2: canvas => {
     let ctx = canvas.getContext("2d");
-
+    
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
@@ -248,10 +248,10 @@ let chartExample3 = {
     gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
 
     return {
-      labels: ["USA", "GER", "AUS", "UK", "RO", "BR"],
+      labels: ["10", "20", "30", "40", "50", "60", "70", "80", "90","100"],
       datasets: [
         {
-          label: "Countries",
+          label: "Students",
           fill: true,
           backgroundColor: gradientStroke,
           hoverBackgroundColor: gradientStroke,
@@ -259,7 +259,7 @@ let chartExample3 = {
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          data: [53, 20, 10, 80, 100, 45]
+          data: [53, 20, 10, 80, 100, 45, 12,23,44,2]
         }
       ]
     };
@@ -358,7 +358,7 @@ const chartExample4 = {
     tooltips: {
       backgroundColor: "#f5f5f5",
       titleFontColor: "#333",
-      bodyFontColor: "#666",
+      USA: "#666",
       bodySpacing: 4,
       xPadding: 12,
       mode: "nearest",
