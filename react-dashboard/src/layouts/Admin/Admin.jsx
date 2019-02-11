@@ -5,6 +5,7 @@ import PerfectScrollbar from "perfect-scrollbar";
 
 // core components
 import AdminNavbar from "components/Navbars/AdminNavbar.jsx";
+import Footer from "components/Footer/Footer.jsx";
 import Sidebar from "components/Sidebar/Sidebar.jsx";
 import FixedPlugin from "components/FixedPlugin/FixedPlugin.jsx";
 
@@ -116,6 +117,7 @@ class Admin extends React.Component {
               sidebarOpened={this.state.sidebarOpened}
             />
             <Switch>{this.getRoutes(routes)}</Switch>
+            <Footer fluid />
           </div>
         </div>
         <FixedPlugin

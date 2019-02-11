@@ -56,7 +56,7 @@ class Dashboard extends React.Component {
                   <Row>
                     <Col className="text-left" sm="6">
                       <h5 className="card-category">Overview</h5>
-                      <CardTitle tag="h2">Average Score</CardTitle>
+                      <CardTitle tag="h2">Average Score By Weeks</CardTitle>
                     </Col>
                     <Col sm="6">
                       <ButtonGroup
@@ -80,7 +80,7 @@ class Dashboard extends React.Component {
                             type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Score
+                            Continuous Assessment
                           </span>
                           <span className="d-block d-sm-none">
                             <i className="tim-icons icon-single-02" />
@@ -102,32 +102,10 @@ class Dashboard extends React.Component {
                             type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Participation
+                            Class Participation
                           </span>
                           <span className="d-block d-sm-none">
                             <i className="tim-icons icon-gift-2" />
-                          </span>
-                        </Button>
-                        <Button
-                          color="info"
-                          id="2"
-                          size="sm"
-                          tag="label"
-                          className={classNames("btn-simple", {
-                            active: this.state.bigChartData === "data3"
-                          })}
-                          onClick={() => this.setBgChartData("data3")}
-                        >
-                          <input
-                            className="d-none"
-                            name="options"
-                            type="radio"
-                          />
-                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            CA1
-                          </span>
-                          <span className="d-block d-sm-none">
-                            <i className="tim-icons icon-tap-02" />
                           </span>
                         </Button>
                       </ButtonGroup>
@@ -147,25 +125,7 @@ class Dashboard extends React.Component {
           </Row>
 
           <Row>
-            <Col lg="3">
-              <Card className="card-chart">
-                <CardHeader>
-                  <CardTitle tag="h3">
-                    <i className="tim-icons icon-bell-55 text-info" />{" "}
-                    763,215
-                  </CardTitle>
-                </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={chartExample2.data}
-                      options={chartExample2.options}
-                    />
-                  </div>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col lg="6">
+            <Col lg="7">
               <Card className="card-chart">
                 <CardHeader>
                   <CardTitle tag="h3">
@@ -183,11 +143,11 @@ class Dashboard extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-            <Col lg="3">
+            <Col lg="5">
               <Card className="card-chart">
                 <CardHeader>
                   <CardTitle tag="h3">
-                    <i className="tim-icons icon-send text-success" /> 12,100K
+                    <i className="tim-icons icon-send text-success" /> Average Score by Years
                   </CardTitle>
                 </CardHeader>
                 <CardBody>

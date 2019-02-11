@@ -142,7 +142,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [80, 120, 105, 110, 95, 105, 90, 100, 80, 95]
+          data: [80, 120, 105, 110, 95, 105, 90, 100, 80]
         }
       ]
     };
@@ -187,7 +187,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130]
+          data: [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60]
         }
       ]
     };
@@ -251,7 +251,7 @@ let chartExample3 = {
       labels: ["10", "20", "30", "40", "50", "60", "70", "80", "90","100"],
       datasets: [
         {
-          label: "Students",
+          label: "Number of Students",
           fill: true,
           backgroundColor: gradientStroke,
           hoverBackgroundColor: gradientStroke,
@@ -327,10 +327,10 @@ const chartExample4 = {
     gradientStroke.addColorStop(0, "rgba(66,134,121,0)"); //green colors
 
     return {
-      labels: ["JUL", "AUG", "SEP", "OCT", "NOV"],
+      labels: ["2016","2017", "2018", "2019"],
       datasets: [
         {
-          label: "My First dataset",
+          label: "Average Score",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: "#00d6b4",
@@ -358,7 +358,7 @@ const chartExample4 = {
     tooltips: {
       backgroundColor: "#f5f5f5",
       titleFontColor: "#333",
-      USA: "#666",
+      bodyFontColor: "#666",
       bodySpacing: 4,
       xPadding: 12,
       mode: "nearest",
