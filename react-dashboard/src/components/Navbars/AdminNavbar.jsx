@@ -1,9 +1,13 @@
 ﻿import React from "react";
 // nodejs library that concatenates classes
 import classNames from "classnames";
+// react plugin for creating notifications over the dashboard
+import NotificationAlert from "react-notification-alert";
 
 // reactstrap components
 import {
+  Alert,
+  UncontrolledAlert,
   Button,
   Collapse,
   DropdownToggle,
@@ -68,6 +72,55 @@ class AdminNavbar extends React.Component {
       modalSearch: !this.state.modalSearch
     });
   };
+
+  //function for notification
+  notify = (place, type, input) => {
+    /*
+    	example-place = ["tc"];
+      example-type = ["primary","success","danger","warning","info"];
+    */
+    var message;
+    switch (input) {
+      case 1:
+        message = (
+	        <div>
+	          <div>
+	            Student <b>Dakota Rice - U1223234G</b> did not show up on <b> Week 5 </b>
+	          </div>
+	        </div>
+	      );
+        break;
+      case 2:
+        message = (
+	        <div>
+	          <div>
+	            Student <b>Dakota Rice - U1223234G</b> did not show up on <b> Week 5 </b>
+	          </div>
+	        </div>
+	      );
+        break;
+      case 3:
+        message = (
+	        <div>
+	          <div>
+	            Student <b>Dakota Rice - U1223234G</b> score drops over 80% on <b> Week 6 </b>
+	          </div>
+	        </div>
+	      );
+        break;
+      default:
+        break;
+    }
+    var options = {};
+    options = {
+      place: place,
+      message: message,
+      type: type,
+      icon: "tim-icons icon-bell-55",
+      autoDismiss: 7
+    };
+    this.refs.notificationAlert.notificationAlert(options);
+  };
   render() {
     return (
       <>
@@ -75,7 +128,10 @@ class AdminNavbar extends React.Component {
           className={classNames("navbar-absolute", this.state.color)}
           expand="lg"
         >
-          <Container fluid>
+          <Container fluid>          
+            <div className="react-notification-alert-container">
+              <NotificationAlert ref="notificationAlert" />
+            </div>
             <div className="navbar-wrapper">
               <div
                 className={classNames("navbar-toggle d-inline", {
@@ -112,6 +168,41 @@ class AdminNavbar extends React.Component {
             </button>
             <Collapse navbar isOpen={this.state.collapseOpen}>
               <Nav className="ml-auto" navbar>
+                <UncontrolledDropdown nav>
+                  <DropdownToggle
+                    caret
+                    color="default"
+                    data-toggle="dropdown"
+                    nav
+                  >
+                    <div className="notification d-none d-lg-block d-xl-block" />
+                    <i className="tim-icons icon-sound-wave" />
+                    <p className="d-lg-none">Notifications</p>
+                  </DropdownToggle>
+                  <DropdownMenu className="dropdown-navbar" right tag="ul">
+                    <NavLink tag="li">
+                      <DropdownItem className="nav-item">
+                        <div onClick={() => this.notify("tc","danger",1)}>
+                          Score below benchmark	
+                        </div>
+                      </DropdownItem>
+                    </NavLink>
+                    <NavLink tag="li">
+                      <DropdownItem className="nav-item">
+                        <div onClick={() => this.notify("tc","warning",2)}>
+                          MC/no show
+                        </div>
+                      </DropdownItem>
+                    </NavLink>
+                    <NavLink tag="li">
+                      <DropdownItem className="nav-item">
+                        <div onClick={() => this.notify("tc","primary",3)}>
+                          Score drops
+                        </div>
+                      </DropdownItem>
+                    </NavLink>
+                  </DropdownMenu>
+                </UncontrolledDropdown>
 
                 <UncontrolledDropdown nav>
                   <DropdownToggle

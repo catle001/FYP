@@ -3,10 +3,12 @@
 // #############################
 
 // chartExample1 and chartExample2 options
+let green = "#00d6b4", pink = "#d048b6", blue = "#1f8ef1";
 let chart1_2_options = {
   maintainAspectRatio: false,
   legend: {
-    display: false
+    display: true,
+    position: 'bottom'
   },
   tooltips: {
     backgroundColor: "#f5f5f5",
@@ -29,9 +31,9 @@ let chart1_2_options = {
           zeroLineColor: "transparent"
         },
         ticks: {
-          suggestedMin: 60,
-          suggestedMax: 125,
-          padding: 20,
+          beginAtZero: true,
+          suggestedMax: 100,
+          stepSize: 20,
           fontColor: "#9a9a9a"
         }
       }
@@ -83,21 +85,53 @@ let chartExample1 = {
       ],
       datasets: [
         {
-          label: "Average score",
-          fill: true,
-          backgroundColor: gradientStroke,
-          borderColor: "#1f8ef1",
+          label: "75th percentile score",
+          fill: false,
+          borderColor: "#00d6b4",
           borderWidth: 2,
           borderDash: [],
           borderDashOffset: 0.0,
-          pointBackgroundColor: "#1f8ef1",
+          pointBackgroundColor: "#00d6b4",
           pointBorderColor: "rgba(255,255,255,0)",
-          pointHoverBackgroundColor: "#1f8ef1",
+          pointHoverBackgroundColor: "#00d6b4",
           pointBorderWidth: 20,
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [100, 70, 90, 70, 85, 60, 75, 60, 90]
+          data: [90, 80, 90, 80, 75, 80, 95, 70, 90]
+        },
+        {
+          label: "Median score",
+          fill: false,
+          backgroundColor: gradientStroke,
+          borderColor: blue,
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: blue,
+          pointBorderColor: "rgba(255,255,255,0)",
+          pointHoverBackgroundColor: blue,
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: [60, 50, 40, 40, 65, 50, 55, 40, 40]
+        },
+        {
+          label: "25th percentile score",
+          fill: false,
+          borderColor: "#d048b6",
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: "#d048b6",
+          pointBorderColor: "rgba(255,255,255,0)",
+          pointHoverBackgroundColor: "#d048b6",
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: [10, 20, 10, 10, 25, 30, 15, 30, 20]
         }
       ]
     };
@@ -173,7 +207,7 @@ let chartExample1 = {
       ],
       datasets: [
         {
-          label: "5 percentile",
+          label: "75 percentile",
           fill: true,
           backgroundColor: gradientStroke,
           borderColor: "#1f8ef1",
@@ -238,7 +272,59 @@ let chartExample2 = {
 // // // used inside src/views/Dashboard.jsx
 // #########################################
 let chartExample3 = {
-  data: canvas => {
+  data1: canvas => {
+    let ctx = canvas.getContext("2d");
+
+    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, "rgba(72,72,176,0.1)");
+    gradientStroke.addColorStop(0.4, "rgba(72,72,176,0.0)");
+    gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
+
+    return {
+      labels: ["10", "20", "30", "40", "50", "60", "70", "80", "90","100"],
+      datasets: [
+        {
+          label: "Number of Students",
+          fill: true,
+          backgroundColor: gradientStroke,
+          hoverBackgroundColor: gradientStroke,
+          borderColor: "#d048b6",
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          data: [53, 20, 10, 80, 100, 45, 12,23,44,2]
+        }
+      ]
+    };
+  },
+  data2: canvas => {
+    let ctx = canvas.getContext("2d");
+
+    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, "rgba(72,72,176,0.1)");
+    gradientStroke.addColorStop(0.4, "rgba(72,72,176,0.0)");
+    gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
+
+    return {
+      labels: ["10", "20", "30", "40", "50", "60", "70", "80", "90","100"],
+      datasets: [
+        {
+          label: "Number of Students",
+          fill: true,
+          backgroundColor: gradientStroke,
+          hoverBackgroundColor: gradientStroke,
+          borderColor: "#d048b6",
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          data: [53, 20, 10, 80, 10, 45, 12,23,44,2]
+        }
+      ]
+    };
+  },
+  data3: canvas => {
     let ctx = canvas.getContext("2d");
 
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -289,8 +375,9 @@ let chartExample3 = {
             zeroLineColor: "transparent"
           },
           ticks: {
-            suggestedMin: 60,
-            suggestedMax: 120,
+            beginAtZero: true,
+            suggestedMax: 100,
+            stepSize: 20,
             padding: 20,
             fontColor: "#9e9e9e"
           }
@@ -327,7 +414,7 @@ const chartExample4 = {
     gradientStroke.addColorStop(0, "rgba(66,134,121,0)"); //green colors
 
     return {
-      labels: ["2016","2017", "2018", "2019"],
+      labels: ["2015","2016","2017", "2018", "2019"],
       datasets: [
         {
           label: "Average Score",
@@ -376,8 +463,9 @@ const chartExample4 = {
             zeroLineColor: "transparent"
           },
           ticks: {
-            suggestedMin: 50,
-            suggestedMax: 125,
+            beginAtZero: true,
+            suggestedMax: 100,
+            stepSize: 20,
             padding: 20,
             fontColor: "#9e9e9e"
           }
@@ -402,9 +490,80 @@ const chartExample4 = {
   }
 };
 
+
+// #########################################
+// // // used inside src/views/Dashboard.jsx
+// #########################################
+const chartExample5 = {
+  data: canvas => {
+    let ctx = canvas.getContext("2d");
+
+    let gradientStroke1 = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke1.addColorStop(1, "rgba(66,134,121,0.15)");
+    gradientStroke1.addColorStop(0.4, "rgba(66,134,121,0.0)"); //green colors
+    gradientStroke1.addColorStop(0, "rgba(66,134,121,0)"); //green colors
+
+    let gradientStroke2 = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke2.addColorStop(1, "rgba(29,140,248,0.2)");
+    gradientStroke2.addColorStop(0.4, "rgba(29,140,248,0.0)");
+    gradientStroke2.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
+
+    let gradientStroke3 = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke3.addColorStop(1, "rgba(72,72,176,0.1)");
+    gradientStroke3.addColorStop(0.4, "rgba(72,72,176,0.0)");
+    gradientStroke3.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
+
+    return {
+      labels: ["Below benchmark", "Above benchmark"],
+      datasets: [
+        {
+          label: "Average Score",
+          fill: true,
+          backgroundColor: [gradientStroke1,gradientStroke2],
+          borderColor: [green,blue],
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: [green,blue],
+          pointBorderColor: "rgba(255,255,255,0)",
+          pointHoverBackgroundColor: [green,blue],
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: [90,27]
+        }
+      ]
+    };
+  },
+  options: {
+    maintainAspectRatio: false,
+    legend: {
+      display: true,
+      position: 'bottom',
+    },
+
+    tooltips: {
+      backgroundColor: "#f5f5f5",
+      titleFontColor: "#333",
+      bodyFontColor: "#666",
+      bodySpacing: 4,
+      xPadding: 12,
+      mode: "nearest",
+      intersect: 0,
+      position: "nearest"
+    },
+    responsive: true
+  }
+};
+
 module.exports = {
   chartExample1, // in src/views/Dashboard.jsx
   chartExample2, // in src/views/Dashboard.jsx
   chartExample3, // in src/views/Dashboard.jsx
-  chartExample4 // in src/views/Dashboard.jsx
+  chartExample4, // in src/views/Dashboard.jsx
+  chartExample5  // in src/views/Dashboard.jsx
 };

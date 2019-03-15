@@ -2,7 +2,7 @@
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react plugin used to create charts
-import { Line, Bar } from "react-chartjs-2";
+import { Line, Bar, Pie } from "react-chartjs-2";
 
 // reactstrap components
 import {
@@ -30,7 +30,8 @@ import {
   chartExample1,
   chartExample2,
   chartExample3,
-  chartExample4
+  chartExample4,
+  chartExample5
 } from "variables/charts.jsx";
 
 class Dashboard extends React.Component {
@@ -54,9 +55,34 @@ class Dashboard extends React.Component {
               <Card className="card-chart">
                 <CardHeader>
                   <Row>
-                    <Col className="text-left" sm="6">
+                    <Col className="text-left" sm="12">
                       <h5 className="card-category">Overview</h5>
-                      <CardTitle tag="h2">Average Score By Weeks</CardTitle>
+                      <CardTitle tag="h2">Score By Week</CardTitle>
+                    </Col>
+                  </Row>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area">
+                    <Line
+                      data={chartExample1.data1}
+                      options={chartExample1.options}
+                    />
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col lg="12">
+              <Card>
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="6">
+                      <CardTitle tag="h3">
+                        <i className="tim-icons icon-bell-55 text-info" />{" "}
+                        Weeks
+                      </CardTitle>
                     </Col>
                     <Col sm="6">
                       <ButtonGroup
@@ -80,10 +106,7 @@ class Dashboard extends React.Component {
                             type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Continuous Assessment
-                          </span>
-                          <span className="d-block d-sm-none">
-                            <i className="tim-icons icon-single-02" />
+                            1
                           </span>
                         </Button>
                         <Button
@@ -102,41 +125,217 @@ class Dashboard extends React.Component {
                             type="radio"
                           />
                           <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
-                            Class Participation
+                            2
                           </span>
-                          <span className="d-block d-sm-none">
-                            <i className="tim-icons icon-gift-2" />
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
+                          </span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
+                          </span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
+                          </span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
+                          </span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
+                          </span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
+                          </span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
+                          </span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
+                          </span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
+                          </span>
+                        </Button>
+                        <Button
+                          color="info"
+                          id="1"
+                          size="sm"
+                          tag="label"
+                          className={classNames("btn-simple", {
+                            active: this.state.bigChartData === "data3"
+                          })}
+                          onClick={() => this.setBgChartData("data3")}
+                        >
+                          <input
+                            className="d-none"
+                            name="options"
+                            type="radio"
+                          />
+                          <span className="d-none d-sm-block d-md-block d-lg-block d-xl-block">
+                            3
                           </span>
                         </Button>
                       </ButtonGroup>
                     </Col>
                   </Row>
                 </CardHeader>
-                <CardBody>
-                  <div className="chart-area">
-                    <Line
-                      data={chartExample1[this.state.bigChartData]}
-                      options={chartExample1.options}
-                    />
-                  </div>
-                </CardBody>
               </Card>
             </Col>
-          </Row>
-
-          <Row>
             <Col lg="7">
               <Card className="card-chart">
                 <CardHeader>
                   <CardTitle tag="h3">
                     <i className="tim-icons icon-delivery-fast text-primary" />{" "}
-                    Score histogram
+                    Score Histogram
                   </CardTitle>
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
                     <Bar
-                      data={chartExample3.data}
+                      data={chartExample3[this.state.bigChartData]}
                       options={chartExample3.options}
                     />
                   </div>
@@ -147,7 +346,27 @@ class Dashboard extends React.Component {
               <Card className="card-chart">
                 <CardHeader>
                   <CardTitle tag="h3">
-                    <i className="tim-icons icon-send text-success" /> Average Score by Years
+                    <i className="tim-icons icon-atom" /> Score proportion
+                  </CardTitle>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area">
+                    <Pie
+                      data={chartExample5.data}
+                      options={chartExample5.options}
+                    />
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+          </Row>
+
+          <Row>
+            <Col lg="12">
+              <Card className="card-chart">
+                <CardHeader>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-send text-success" /> Average Score by Year
                   </CardTitle>
                 </CardHeader>
                 <CardBody>

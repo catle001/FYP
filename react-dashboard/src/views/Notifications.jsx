@@ -17,7 +17,7 @@ import {
 
 class Notifications extends React.Component {
   notify = place => {
-    var color = Math.floor(Math.random() * 5 + 1);
+    var color = 4;
     var type;
     switch (color) {
       case 1:
@@ -44,8 +44,7 @@ class Notifications extends React.Component {
       message: (
         <div>
           <div>
-            Welcome to <b>Black Dashboard React</b> - a beautiful freebie for
-            every web developer.
+            Warning: Student <b>Dakota Rice - U1223234G</b> got score below benchmark on <b> Week 4 </b>
           </div>
         </div>
       ),
@@ -63,18 +62,24 @@ class Notifications extends React.Component {
             <NotificationAlert ref="notificationAlert" />
           </div>
           <Row>
-            <Col md="6">
+            <Col md="7">
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h4">Notifications Style</CardTitle>
+                  <CardTitle tag="h4">Under-performance Notifications</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <Alert color="info">
-                    <span>This is a plain notification</span>
+                  <Alert color="danger">
+                    <span>
+                      Student <b>Dakota Rice</b> scored below benchmark on 
+                      <b> Week 4 </b>
+                    </span>
                   </Alert>
-                  <UncontrolledAlert color="info">
-                    <span>This is a notification with close button.</span>
-                  </UncontrolledAlert>
+                  <Alert color="warning">
+                    <span>
+                      Student <b>Dakota Rice</b> scored drops by 50% on 
+                      <b> Week 4 </b>
+                    </span>
+                  </Alert>
                   <UncontrolledAlert className="alert-with-icon" color="info">
                     <span
                       className="tim-icons icon-bell-55"
@@ -99,30 +104,24 @@ class Notifications extends React.Component {
                 </CardBody>
               </Card>
             </Col>
-            <Col md="6">
+            <Col md="5">
               <Card>
                 <CardHeader>
-                  <CardTitle tag="h4">Notification states</CardTitle>
+                  <CardTitle tag="h4">Over-performance Notifications</CardTitle>
                 </CardHeader>
                 <CardBody>
-                  <UncontrolledAlert color="primary">
+                  <Alert color="info">
                     <span>
-                      <b>Primary - </b>
-                      This is a regular notification made with ".alert-primary"
+                      Student <b>Dakota Rice</b> is the top scorer on 
+                      <b> Week 4 </b>
                     </span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert color="info">
+                  </Alert>
+                  <Alert color="success">
                     <span>
-                      <b>Info - </b>
-                      This is a regular notification made with ".alert-info"
+                      <b>All</b> student scores above benchmark on 
+                      <b> Week 6 </b>
                     </span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert color="success">
-                    <span>
-                      <b>Success - </b>
-                      This is a regular notification made with ".alert-success"
-                    </span>
-                  </UncontrolledAlert>
+                  </Alert>
                   <UncontrolledAlert color="warning">
                     <span>
                       <b>Warning - </b>
@@ -135,89 +134,6 @@ class Notifications extends React.Component {
                       This is a regular notification made with ".alert-danger"
                     </span>
                   </UncontrolledAlert>
-                </CardBody>
-              </Card>
-            </Col>
-            <Col md="12">
-              <Card>
-                <CardBody>
-                  <div className="places-buttons">
-                    <Row>
-                      <Col className="ml-auto mr-auto text-center" md="6">
-                        <CardTitle tag="h4">
-                          Notifications Places<p className="category">
-                            Click to view notifications
-                          </p>
-                        </CardTitle>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="ml-auto mr-auto" lg="8">
-                        <Row>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("tl")}
-                            >
-                              Top Left
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("tc")}
-                            >
-                              Top Center
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("tr")}
-                            >
-                              Top Right
-                            </Button>
-                          </Col>
-                        </Row>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="ml-auto mr-auto" lg="8">
-                        <Row>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("bl")}
-                            >
-                              Bottom Left
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("bc")}
-                            >
-                              Bottom Center
-                            </Button>
-                          </Col>
-                          <Col md="4">
-                            <Button
-                              block
-                              color="primary"
-                              onClick={() => this.notify("br")}
-                            >
-                              Bottom Right
-                            </Button>
-                          </Col>
-                        </Row>
-                      </Col>
-                    </Row>
-                  </div>
                 </CardBody>
               </Card>
             </Col>
