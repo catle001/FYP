@@ -98,7 +98,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [90, 80, 90, 80, 75, 80, 95, 70, 90]
+          data: [90, 80, 90, 80, 75, 80, 95, 70]
         },
         {
           label: "Median score",
@@ -115,7 +115,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [60, 50, 40, 40, 65, 50, 55, 40, 40]
+          data: [60, 50, 40, 40, 65, 50, 55, 40]
         },
         {
           label: "25th percentile score",
@@ -131,7 +131,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [10, 20, 10, 10, 25, 30, 15, 30, 20]
+          data: [10, 20, 10, 10, 25, 30, 15, 30 ]
         }
       ]
     };
@@ -268,6 +268,40 @@ let chartExample2 = {
   options: chart1_2_options
 };
 
+let randomNumber = function(){
+    const min = 1;
+    const max = 100;
+    var rand = Math.ceil(min + Math.random() * (max - min));
+    return rand;
+  }
+
+var chartdata3 = canvas => {
+  let ctx = canvas.getContext("2d");
+
+  let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+  gradientStroke.addColorStop(1, "rgba(72,72,176,0.1)");
+  gradientStroke.addColorStop(0.4, "rgba(72,72,176,0.0)");
+  gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
+
+  return {
+    labels: ["10", "20", "30", "40", "50", "60", "70", "80", "90","100"],
+    datasets: [
+      {
+        label: "Number of Students",
+        fill: true,
+        backgroundColor: gradientStroke,
+        hoverBackgroundColor: gradientStroke,
+        borderColor: "#d048b6",
+        borderWidth: 2,
+        borderDash: [],
+        borderDashOffset: 0.0,
+        data: [randomNumber(), randomNumber(), randomNumber(), randomNumber(), randomNumber(), randomNumber(),
+         randomNumber(),randomNumber(),randomNumber(),randomNumber()]
+      }
+    ]
+  };
+};
 // #########################################
 // // // used inside src/views/Dashboard.jsx
 // #########################################
@@ -324,32 +358,14 @@ let chartExample3 = {
       ]
     };
   },
-  data3: canvas => {
-    let ctx = canvas.getContext("2d");
 
-    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
-
-    gradientStroke.addColorStop(1, "rgba(72,72,176,0.1)");
-    gradientStroke.addColorStop(0.4, "rgba(72,72,176,0.0)");
-    gradientStroke.addColorStop(0, "rgba(119,52,169,0)"); //purple colors
-
-    return {
-      labels: ["10", "20", "30", "40", "50", "60", "70", "80", "90","100"],
-      datasets: [
-        {
-          label: "Number of Students",
-          fill: true,
-          backgroundColor: gradientStroke,
-          hoverBackgroundColor: gradientStroke,
-          borderColor: "#d048b6",
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          data: [53, 20, 10, 80, 100, 45, 12,23,44,2]
-        }
-      ]
-    };
-  },
+  data3 : chartdata3,
+  data4 : chartdata3,
+  data5 : chartdata3,
+  data6 : chartdata3,
+  data7 : chartdata3,
+  data8 : chartdata3,
+  data9 : chartdata3,
   options: {
     maintainAspectRatio: false,
     legend: {
@@ -494,8 +510,8 @@ const chartExample4 = {
 // #########################################
 // // // used inside src/views/Dashboard.jsx
 // #########################################
-const chartExample5 = {
-  data: canvas => {
+
+let pieChartData = canvas => {
     let ctx = canvas.getContext("2d");
 
     let gradientStroke1 = ctx.createLinearGradient(0, 230, 0, 50);
@@ -534,11 +550,21 @@ const chartExample5 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [90,27]
+          data: [randomNumber(),randomNumber()]
         }
       ]
     };
-  },
+  }
+const chartExample5 = {
+  data1: pieChartData,
+  data2: pieChartData,
+  data3: pieChartData,
+  data4: pieChartData,
+  data5: pieChartData,
+  data6: pieChartData,
+  data7: pieChartData,
+  data8: pieChartData,
+  data9: pieChartData,
   options: {
     maintainAspectRatio: false,
     legend: {
