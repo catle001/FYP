@@ -1,4 +1,6 @@
 import React from "react";
+// react plugin used to create charts
+import { Line, Bar, Pie } from "react-chartjs-2";
 
 // reactstrap components
 import {
@@ -8,12 +10,23 @@ import {
   CardBody,
   CardFooter,
   CardText,
+  CardTitle,
   FormGroup,
   Form,
   Input,
   Row,
-  Col
+  Col,
+  Table
 } from "reactstrap";
+
+// core components
+import {
+  chartExample1,
+  chartExample2,
+  chartExample3,
+  chartExample4,
+  chartExample5
+} from "variables/charts.jsx";
 
 class UserProfile extends React.Component {
   render() {
@@ -22,128 +35,63 @@ class UserProfile extends React.Component {
         <div className="content">
           <Row>
             <Col md="8">
-              <Card>
-                <CardHeader>
-                  <h5 className="title">Edit Profile</h5>
-                </CardHeader>
-                <CardBody>
-                  <Form>
-                    <Row>
-                      <Col className="pr-md-1" md="5">
-                        <FormGroup>
-                          <label>Username</label>
-                          <Input
-                            defaultValue="Cat001"
-                            disabled
-                            placeholder="Company"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="px-md-1" md="3">
-                        <FormGroup>
-                          <label>Matric No</label>
-                          <Input
-                            disabled
-                            defaultValue="U1520508G"
-                            placeholder="Username"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="pl-md-1" md="4">
-                        <FormGroup>
-                          <label htmlFor="exampleInputEmail1">
-                            Email address
-                          </label>
-                          <Input placeholder="cat001@e.ntu.edu.sg" type="email" />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="pr-md-1" md="6">
-                        <FormGroup>
-                          <label>First Name</label>
-                          <Input
-                            defaultValue="Cat"
-                            placeholder="Company"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="pl-md-1" md="6">
-                        <FormGroup>
-                          <label>Last Name</label>
-                          <Input
-                            defaultValue="Le"
-                            placeholder="Last Name"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md="12">
-                        <FormGroup>
-                          <label>Address</label>
-                          <Input
-                            defaultValue="66 Nanyang Crescent, Nanyang  Technological University"
-                            placeholder="Home Address"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col className="pr-md-1" md="4">
-                        <FormGroup>
-                          <label>City</label>
-                          <Input
-                            defaultValue="Singapore"
-                            placeholder="City"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="px-md-1" md="4">
-                        <FormGroup>
-                          <label>Country</label>
-                          <Input
-                            defaultValue="Singapore"
-                            placeholder="Country"
-                            type="text"
-                          />
-                        </FormGroup>
-                      </Col>
-                      <Col className="pl-md-1" md="4">
-                        <FormGroup>
-                          <label>Postal Code</label>
-                          <Input placeholder="ZIP Code" type="number" />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col md="8">
-                        <FormGroup>
-                          <label>About Me</label>
-                          <Input
-                            cols="80"
-                            defaultValue="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-                            placeholder="Here can be your description"
-                            rows="4"
-                            type="textarea"
-                          />
-                        </FormGroup>
-                      </Col>
-                    </Row>
-                  </Form>
-                </CardBody>
-                <CardFooter>
-                  <Button className="btn-fill" color="primary" type="submit">
-                    Save
-                  </Button>
-                </CardFooter>
-              </Card>
+              <Row>
+                <Col md="4" sm="4">
+                  <Card>
+                    <CardHeader>
+                      <h5 className="title">Ranking</h5>
+                      <CardTitle tag="h3">
+                        <span><i className="tim-icons icon-bell-55 text-info" />{" "}</span>
+                        40th
+                      </CardTitle>
+                    </CardHeader>
+                  </Card>
+                </Col>
+                <Col md="4" sm="4">
+                  <Card>
+                    <CardHeader>
+                      <h5 className="title">My average</h5>
+                      <CardTitle tag="h3">
+                        <i className="tim-icons icon-app text-success" />{" "}
+                        80
+                      </CardTitle>
+                    </CardHeader>
+                  </Card>
+                </Col>
+                <Col md="4" sm="4">
+                  <Card>
+                    <CardHeader>
+                      <h5 className="title">Class average</h5>
+                      <CardTitle tag="h3">
+                        <i className="tim-icons icon-molecule-40 text-primary" />{" "}
+                        80  
+                      </CardTitle>
+                    </CardHeader>
+                  </Card>
+                </Col>
+              </Row>
+
+              <Row>
+                <Col xs="12">
+                  <Card className="card-chart">
+                    <CardHeader>
+                      <Row>
+                        <Col className="text-left" sm="12">
+                          <h5 className="title">Score by week</h5>
+                        </Col>
+                      </Row>
+                    </CardHeader>
+                    <CardBody>
+                      <div className="chart-area">
+                        <Line
+                          data={chartExample1.data2}
+                          options={chartExample1.options}
+                        />
+                      </div>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
             </Col>
             <Col md="4">
               <Card className="card-user">
@@ -162,24 +110,31 @@ class UserProfile extends React.Component {
                       />
                       <h5 className="title">Cat Le</h5>
                     </a>
-                    <p className="description">Undergraduate Electrical and Electronics Engineering</p>
+                    <p className="description">Undergraduate Electrical and Electronics Enginneering</p>
                   </div>
                   <div className="card-description">
-                    Do not be scared of the truth because we need to restart the
-                    human foundation in truth And I love you like Kanye loves
-                    Kanye I love Rick Owens’ bed design but the back is...
+                    <Table className="tablesorter" responsive>
+                      <tbody>
+                        <tr>
+                          <td>Matric No</td>
+                          <td >U1234567G</td>
+                        </tr>
+                        <tr>
+                          <td>Mobile No</td>
+                          <td >1234 5678</td>
+                        </tr>
+                        <tr>
+                          <td>Email</td>
+                          <td >rice001@e.ntu.edu.sg</td>
+                        </tr>
+                      </tbody>
+                    </Table>
                   </div>
                 </CardBody>
                 <CardFooter>
-                  <div className="button-container">
-                    <Button className="btn-icon btn-round" color="facebook">
-                      <i className="fab fa-facebook" />
-                    </Button>
-                    <Button className="btn-icon btn-round" color="twitter">
-                      <i className="fab fa-twitter" />
-                    </Button>
+                  <div className="button-container">  
                     <Button className="btn-icon btn-round" color="google">
-                      <i className="fab fa-google-plus" />
+                      <i className="tim-icons icon-email-85" />
                     </Button>
                   </div>
                 </CardFooter>

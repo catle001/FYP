@@ -350,7 +350,7 @@ class Dashboard extends React.Component {
               <Card className="card-chart">
                 <CardHeader>
                   <CardTitle tag="h3">
-                    <i className="tim-icons icon-atom" /> Score proportion
+                    <i className="tim-icons icon-atom " /> Score proportion
                   </CardTitle>
                 </CardHeader>
                 <CardBody>

@@ -27,8 +27,6 @@ class Tables extends React.Component {
                     <thead className="text-primary">
                       <tr>
                         <th>Name</th>
-                        <th>Matric</th>
-                        <th>Email</th>
                         <th className="text-center">Wk1</th>
                         <th className="text-center">Wk2</th>
                         <th className="text-center">Wk3</th>
@@ -40,8 +38,6 @@ class Tables extends React.Component {
                     <tbody>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -51,8 +47,6 @@ class Tables extends React.Component {
                       </tr>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -62,8 +56,6 @@ class Tables extends React.Component {
                       </tr>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -87,8 +79,6 @@ class Tables extends React.Component {
                     <thead className="text-primary">
                       <tr>
                         <th>Name</th>
-                        <th>Matric</th>
-                        <th>Email</th>
                         <th className="text-center">Wk1</th>
                         <th className="text-center">Wk2</th>
                         <th className="text-center">Wk3</th>
@@ -100,8 +90,6 @@ class Tables extends React.Component {
                     <tbody>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -111,8 +99,6 @@ class Tables extends React.Component {
                       </tr>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -137,8 +123,6 @@ class Tables extends React.Component {
                     <thead className="text-primary">
                       <tr>
                         <th>Name</th>
-                        <th>Matric</th>
-                        <th>Email</th>
                         <th className="text-center">Wk1</th>
                         <th className="text-center">Wk2</th>
                         <th className="text-center">Wk3</th>
@@ -150,8 +134,6 @@ class Tables extends React.Component {
                     <tbody>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -161,8 +143,6 @@ class Tables extends React.Component {
                       </tr>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -172,8 +152,6 @@ class Tables extends React.Component {
                       </tr>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -183,8 +161,6 @@ class Tables extends React.Component {
                       </tr>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -194,8 +170,6 @@ class Tables extends React.Component {
                       </tr>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -205,8 +179,6 @@ class Tables extends React.Component {
                       </tr>
                       <tr>
                         <td>Dakota Rice</td>
-                        <td >U1223234G</td>
-                        <td >rice001@e.ntu.edu.sg</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
