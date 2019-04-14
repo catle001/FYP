@@ -4,6 +4,8 @@ import { Line, Bar, Pie } from "react-chartjs-2";
 
 // reactstrap components
 import {
+  Alert,
+  UncontrolledAlert,
   Button,
   Card,
   CardHeader,
@@ -21,12 +23,8 @@ import {
 
 // core components
 import {
-  chartExample1,
-  chartExample2,
-  chartExample3,
-  chartExample4,
-  chartExample5
-} from "variables/charts.jsx";
+  chartExample1
+} from "variables/user-chart.jsx";
 
 class UserProfile extends React.Component {
   render() {
@@ -88,6 +86,35 @@ class UserProfile extends React.Component {
                           options={chartExample1.options}
                         />
                       </div>
+                    </CardBody>
+                  </Card>
+                </Col>
+              </Row>
+              <Row>   
+                <Col>           
+                  <Card>
+                    <CardHeader>
+                      <CardTitle tag="h4"> Notifications</CardTitle>
+                    </CardHeader>
+                    <CardBody>
+                      <Alert color="info">
+                        <span>
+                          <b>You</b> score above benchmark on 
+                          <b> Week 3 </b>
+                        </span>
+                      </Alert>
+                      <Alert color="success">
+                        <span>
+                          <b>You</b> are the top scorer on 
+                          <b> Week 4 </b>
+                        </span>
+                      </Alert>
+                      <Alert color="danger">
+                        <span>
+                          <b>You</b> are the below benchmark on 
+                          <b> Week 6 </b>
+                        </span>
+                      </Alert>
                     </CardBody>
                   </Card>
                 </Col>

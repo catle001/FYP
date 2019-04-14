@@ -66,9 +66,9 @@ let chart1_2_options = {
 
 let myscore =  [randomNumber(), randomNumber(), randomNumber(), randomNumber(), randomNumber(), randomNumber(), randomNumber(), randomNumber()];
 let chartExample1 = {
-  data1: canvas => {
+  data2: canvas => {
     let ctx = canvas.getContext("2d");
-
+    
     let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
     gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
@@ -92,7 +92,7 @@ let chartExample1 = {
       ],
       datasets: [
         {
-          label: "75th percentile score",
+          label: "My score",
           fill: false,
           borderColor: "#00d6b4",
           borderWidth: 2,
@@ -105,7 +105,7 @@ let chartExample1 = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: [90, 80, 90, 80, 75, 80, 95, 70]
+          data: myscore
         },
         {
           label: "Median score",
@@ -123,28 +123,55 @@ let chartExample1 = {
           pointHoverBorderWidth: 15,
           pointRadius: 4,
           data: [60, 50, 40, 40, 65, 50, 55, 40]
-        },
-        {
-          label: "25th percentile score",
-          fill: false,
-          borderColor: "#d048b6",
-          borderWidth: 2,
-          borderDash: [],
-          borderDashOffset: 0.0,
-          pointBackgroundColor: "#d048b6",
-          pointBorderColor: "rgba(255,255,255,0)",
-          pointHoverBackgroundColor: "#d048b6",
-          pointBorderWidth: 20,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 15,
-          pointRadius: 4,
-          data: [10, 20, 10, 10, 25, 30, 15, 30 ]
         }
       ]
     };
   },
   options: chart1_2_options
 };
+
+// #########################################
+// // // used inside src/views/Dashboard.jsx
+// #########################################
+let chartExample2 = {
+  data: canvas => {
+    let ctx = canvas.getContext("2d");
+
+    let gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
+
+    gradientStroke.addColorStop(1, "rgba(29,140,248,0.2)");
+    gradientStroke.addColorStop(0.4, "rgba(29,140,248,0.0)");
+    gradientStroke.addColorStop(0, "rgba(29,140,248,0)"); //blue colors
+
+    return {
+      labels: ["JUL", "AUG", "SEP", "OCT", "NOV", "DEC"],
+      datasets: [
+        {
+          label: "Data",
+          fill: true,
+          backgroundColor: gradientStroke,
+          borderColor: "#1f8ef1",
+          borderWidth: 2,
+          borderDash: [],
+          borderDashOffset: 0.0,
+          pointBackgroundColor: "#1f8ef1",
+          pointBorderColor: "rgba(255,255,255,0)",
+          pointHoverBackgroundColor: "#1f8ef1",
+          pointBorderWidth: 20,
+          pointHoverRadius: 4,
+          pointHoverBorderWidth: 15,
+          pointRadius: 4,
+          data: [80, 100, 70, 80, 120, 80]
+        }
+      ]
+    };
+  },
+  options: chart1_2_options
+};
+
+
+
+
 
 
 module.exports = {

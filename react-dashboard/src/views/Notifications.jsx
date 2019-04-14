@@ -76,31 +76,10 @@ class Notifications extends React.Component {
                   </Alert>
                   <Alert color="warning">
                     <span>
-                      Student <b>Dakota Rice</b> scored drops by 50% on 
+                      Student <b>David Sim</b> scored drops by 50% on 
                       <b> Week 4 </b>
                     </span>
                   </Alert>
-                  <UncontrolledAlert className="alert-with-icon" color="info">
-                    <span
-                      className="tim-icons icon-bell-55"
-                      data-notify="icon"
-                    />
-                    <span data-notify="message">
-                      This is a notification with close button and icon.
-                    </span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert className="alert-with-icon" color="info">
-                    <span
-                      className="tim-icons icon-bell-55"
-                      data-notify="icon"
-                    />
-                    <span data-notify="message">
-                      This is a notification with close button and icon and have
-                      many lines. You can see that the icon and the close button
-                      are always vertically aligned. This is a beautiful
-                      notification. So you don't have to worry about the style.
-                    </span>
-                  </UncontrolledAlert>
                 </CardBody>
               </Card>
             </Col>
@@ -112,7 +91,7 @@ class Notifications extends React.Component {
                 <CardBody>
                   <Alert color="info">
                     <span>
-                      Student <b>Dakota Rice</b> is the top scorer on 
+                      Student <b>Kent Tan</b> is the top scorer on 
                       <b> Week 4 </b>
                     </span>
                   </Alert>
@@ -122,18 +101,6 @@ class Notifications extends React.Component {
                       <b> Week 6 </b>
                     </span>
                   </Alert>
-                  <UncontrolledAlert color="warning">
-                    <span>
-                      <b>Warning - </b>
-                      This is a regular notification made with ".alert-warning"
-                    </span>
-                  </UncontrolledAlert>
-                  <UncontrolledAlert color="danger">
-                    <span>
-                      <b>Danger - </b>
-                      This is a regular notification made with ".alert-danger"
-                    </span>
-                  </UncontrolledAlert>
                 </CardBody>
               </Card>
             </Col>

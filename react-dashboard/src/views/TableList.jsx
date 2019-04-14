@@ -37,7 +37,7 @@ class Tables extends React.Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Derek Ho</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -46,7 +46,7 @@ class Tables extends React.Component {
                         <td className="text-center">38</td>
                       </tr>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Kent Tan</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -55,7 +55,7 @@ class Tables extends React.Component {
                         <td className="text-center">38</td>
                       </tr>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Kazet Tan</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -89,7 +89,7 @@ class Tables extends React.Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Martin Le</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -98,7 +98,7 @@ class Tables extends React.Component {
                         <td className="text-center">38</td>
                       </tr>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>David Sim</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -133,7 +133,7 @@ class Tables extends React.Component {
                     </thead>
                     <tbody>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Tan Xiao Gou</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -142,7 +142,7 @@ class Tables extends React.Component {
                         <td className="text-center">38</td>
                       </tr>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Tan Wei Wei</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -151,7 +151,7 @@ class Tables extends React.Component {
                         <td className="text-center">38</td>
                       </tr>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Chi Pu</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -160,7 +160,7 @@ class Tables extends React.Component {
                         <td className="text-center">38</td>
                       </tr>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Duyen Le</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -169,7 +169,7 @@ class Tables extends React.Component {
                         <td className="text-center">38</td>
                       </tr>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Nguyet Nguyen</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>
@@ -178,7 +178,7 @@ class Tables extends React.Component {
                         <td className="text-center">38</td>
                       </tr>
                       <tr>
-                        <td>Dakota Rice</td>
+                        <td>Martin Tan</td>
                         <td className="text-center">10</td>
                         <td className="text-center">73</td>
                         <td className="text-center">73</td>

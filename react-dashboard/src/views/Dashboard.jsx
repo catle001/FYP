@@ -2,7 +2,7 @@
 // nodejs library that concatenates classes
 import classNames from "classnames";
 // react plugin used to create charts
-import { Line, Bar, Pie } from "react-chartjs-2";
+import { Line, Bar, Doughnut, Bubble, Polar } from "react-chartjs-2";
 
 // reactstrap components
 import {
@@ -12,14 +12,6 @@ import {
   CardHeader,
   CardBody,
   CardTitle,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
-  UncontrolledDropdown,
-  Label,
-  FormGroup,
-  Input,
-  Table,
   Row,
   Col,
   UncontrolledTooltip
@@ -27,12 +19,18 @@ import {
 
 // core components
 import {
-  chartExample1,
-  chartExample2,
-  chartExample3,
-  chartExample4,
-  chartExample5
+  chartExample1
 } from "variables/charts.jsx";
+
+import {
+  bubbleChart,
+  polarChart
+} from "variables/year-charts.jsx";
+
+import {
+  pieChart,
+  histogram
+} from "variables/week-charts.jsx";
 
 class Dashboard extends React.Component {
   constructor(props) {
@@ -45,7 +43,14 @@ class Dashboard extends React.Component {
     this.setState({
       bigChartData: name
     });
-  };
+  }
+
+  setBgChartData1 = (name) => {
+    this.setState({
+      bigChartData: name
+    });
+  }
+
   render() {
     return (
       <>
@@ -339,8 +344,8 @@ class Dashboard extends React.Component {
                 <CardBody>
                   <div className="chart-area">
                     <Bar
-                      data={chartExample3[this.state.bigChartData]}
-                      options={chartExample3.options}
+                      data={histogram[this.state.bigChartData]}
+                      options={histogram.options}
                     />
                   </div>
                 </CardBody>
@@ -350,14 +355,14 @@ class Dashboard extends React.Component {
               <Card className="card-chart">
                 <CardHeader>
                   <CardTitle tag="h3">
-                    <i className="tim-icons icon-atom " /> Score proportion
+                    <i className="tim-icons icon-atom text-success" /> Score proportion
                   </CardTitle>
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
-                    <Pie
-                      data={chartExample5[this.state.bigChartData]}
-                      options={chartExample5.options}
+                    <Doughnut
+                      data={pieChart[this.state.bigChartData]}
+                      options={pieChart.options}
                     />
                   </div>
                 </CardBody>
@@ -366,18 +371,50 @@ class Dashboard extends React.Component {
           </Row>
 
           <Row>
+
             <Col lg="12">
+              <Card>
+                <CardHeader>
+                  <Row>
+                    <Col className="text-left" sm="6">
+                      <CardTitle tag="h3">
+                        <i className="tim-icons icon-app text-info" />{" "}
+                        Years
+                      </CardTitle>
+                    </Col>
+                  </Row>
+                </CardHeader>
+              </Card>
+            </Col>
+            <Col lg="5">            
               <Card className="card-chart">
                 <CardHeader>
                   <CardTitle tag="h3">
-                    <i className="tim-icons icon-send text-success" /> Average Score by Year
+                    <i className="tim-icons icon-send text-success" /> Average Score
                   </CardTitle>
                 </CardHeader>
                 <CardBody>
                   <div className="chart-area">
-                    <Line
-                      data={chartExample4.data}
-                      options={chartExample4.options}
+                    <Polar
+                      data={polarChart.data}
+                      options={polarChart.options}
+                    />
+                  </div>
+                </CardBody>
+              </Card>
+            </Col>
+            <Col lg="7">            
+              <Card className="card-chart">
+                <CardHeader>
+                  <CardTitle tag="h3">
+                    <i className="tim-icons icon-components text-primary" /> Score map
+                  </CardTitle>
+                </CardHeader>
+                <CardBody>
+                  <div className="chart-area">
+                    <Bubble
+                      data={bubbleChart.data}
+                      options={bubbleChart.options}
                     />
                   </div>
                 </CardBody>
